@@ -1,5 +1,14 @@
 import logging
 
+def modify(query):
+    original_query = query
+    print('original_query', query)
+    # response = requests.get("http://localhost:3000/rewrite?query={}".format(original_query))
+    # modified_query = response.text
+    print('modified_query', original_query)
+    return original_query.encode('utf-8') + b'\x00'
+
+
 class Interceptor:
     def __init__(self, interceptor_config, plugins, context):
         self.interceptor_config = interceptor_config
