@@ -113,6 +113,7 @@ class Proxy:
                 logging.debug('%s received data:\n%s', conn.name, recv_data)
                 conn.received(recv_data)
             else:
+                self.__unregister_conn(conn)
                 logging.info('%s connection closing %s', conn.name, conn.address)
                 sock.close()
         if mask & selectors.EVENT_WRITE:
